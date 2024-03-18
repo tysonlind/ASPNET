@@ -4,7 +4,7 @@ using ASPNET.Models;
 
 namespace ASPNET
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly IDbConnection _connection;
         public ProductRepository(IDbConnection connection)
@@ -14,7 +14,7 @@ namespace ASPNET
 
         public IEnumerable<Product> GetAllProducts()
         {
-            return (IEnumerable<Product>)_connection.Query("SELECT * FROM products;");
+            return _connection.Query<Product>("SELECT * FROM products;");
         }
     }
 }

@@ -16,5 +16,10 @@ namespace ASPNET
         {
             return _connection.Query<Product>("SELECT * FROM products;");
         }
+
+        public Product GetProduct(int id)
+        {
+            return _connection.QuerySingle<Product>("SELECT * FROM products WHERE productID = @id", new { id = id });
+        }
     }
 }

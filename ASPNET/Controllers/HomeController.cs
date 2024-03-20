@@ -23,6 +23,11 @@ namespace ASPNET.Controllers
             return View();
         }
 
+        public IActionResult Products()
+        {
+            return RedirectToAction("Index", "Product");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
